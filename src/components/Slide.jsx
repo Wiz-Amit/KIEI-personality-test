@@ -1,15 +1,9 @@
 import { useContext } from "react";
-import {
-  Badge,
-  Button,
-  ButtonGroup,
-  OverlayTrigger,
-  Tooltip,
-} from "react-bootstrap";
+import { Button, ButtonGroup } from "react-bootstrap";
 import { useHistory, useParams } from "react-router-dom";
 import InventoryContext from "../store/inventory-context";
 import InvisibleCard from "./UI/InvisibleCard";
-import OptionsB from "./OptionsB";
+import QuestionCard from "./QuestionCard";
 
 const Slide = (props) => {
   const history = useHistory();
@@ -49,16 +43,7 @@ const Slide = (props) => {
         className="actions mt-2 text-center m-auto"
         style={{ maxWidth: "400px" }}
       >
-        <OverlayTrigger
-          overlay={<Tooltip id="how-to-choose-answer">info.</Tooltip>}
-        >
-          <p className="text-muted">
-            <span>Choose answer </span>
-            <Badge className="badge-info badge-pill text-white">?</Badge>
-          </p>
-        </OverlayTrigger>
-
-        <OptionsB onChange={updateAnswer} />
+        <QuestionCard question={question} updateAnswer={updateAnswer} />
 
         <ButtonGroup className="mt-4">
           <Button onClick={goToPrevSlide} type="button" variant="primary">
@@ -96,6 +81,15 @@ const Slide = (props) => {
             </Button>
           )}
         </ButtonGroup>
+
+        <Button
+          onClick={viewResult}
+          type="button"
+          variant="primary"
+          className="px-5 mt-3"
+        >
+          View Result
+        </Button>
       </div>
     </InvisibleCard>
   );

@@ -1,13 +1,18 @@
+import { useEffect } from "react";
 import { useState } from "react";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import "./Options.scss";
 
-const OptionsB = (props) => {
-  const [value, setValue] = useState(props.value);
+const OptionsB = ({ question, onChange }) => {
+  const [value, setValue] = useState();
+
+  useEffect(() => {
+    setValue(question.answer);
+  }, [question]);
 
   const choose = (value) => {
     value = parseInt(value);
-    props.onChange(value);
+    onChange(value);
     setValue(value);
   };
 
