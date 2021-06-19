@@ -21,7 +21,8 @@
     transition: background 0.4s, box-shadow 0.4s, transform 0.3s;
     -webkit-tap-highlight-color: transparent;
     &:not(:last-child) {
-      margin-right: 20px;
+      margin-left: 10px;
+      margin-right: 10px;
     }
     &:hover {
       transform: scale(1.3);

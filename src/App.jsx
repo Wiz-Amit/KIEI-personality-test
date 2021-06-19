@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import { Container } from "react-bootstrap";
 import { Route, Switch } from "react-router-dom";
 import Navigation from "./components/Layout/navigation";
-import Result from "./components/Result";
+import Result from "./components/Screens/Result";
 import Welcome from "./components/Screens/welcome";
 import Slide from "./components/Slide";
 import InventoryProvider from "./store/InventoryProvider";
