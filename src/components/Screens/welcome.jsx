@@ -14,7 +14,14 @@ const Welcome = (props) => {
       name: e.target.name.value,
       email: e.target.email.value,
     };
-    inventoryCtx.setUser(user);
+
+    if (
+      !inventoryCtx.user ||
+      user.name !== inventoryCtx.user.name ||
+      user.email !== inventoryCtx.user.email
+    ) {
+      inventoryCtx.setUser(user);
+    }
 
     history.push("/questions/1");
   };

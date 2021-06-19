@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import InventoryContext from "./inventory-context";
 
 const QUESTIONS = [
@@ -337,18 +338,22 @@ const QUESTIONS = [
 ];
 
 const InventoryProvider = (props) => {
-  const [user, setUser] = useState("");
-  const [questions, setQuestions] = useState(QUESTIONS);
+  const history = useHistory();
+  const [user, setUser] = useState();
+  const [questions, setQuestions] = useState();
 
   useEffect(() => {
-    const user = localStorage.getItem("user");
+    const storedUser = localStorage.getItem("user");
     const storedQuestions = localStorage.getItem("questions");
 
-    if (!user) return;
-    setUser(JSON.parse(user));
-
-    if (storedQuestions) {
+    if (storedUser && storedQuestions) {
       setQuestions(JSON.parse(storedQuestions));
+    } else {
+      setQuestions(QUESTIONS);
+    }
+
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
     }
   }, []);
 
@@ -357,9 +362,22 @@ const InventoryProvider = (props) => {
   }, [questions]);
 
   useEffect(() => {
+    if (!user) {
+      history.push("/");
+      return;
+    }
+
+    const storedUser = JSON.parse(localStorage.getItem("user"));
     localStorage.setItem("user", JSON.stringify(user));
-    localStorage.setItem("questions", JSON.stringify(QUESTIONS));
-  }, [user]);
+    if (
+      !storedUser ||
+      user.name !== storedUser.name ||
+      user.email !== storedUser.email
+    ) {
+      console.log({ storedUser, user });
+      setQuestions(QUESTIONS);
+    }
+  }, [user, history]);
 
   const setAnswer = (id, answer) => {
     id = parseInt(id);
@@ -379,6 +397,7 @@ const InventoryProvider = (props) => {
 
   const getQuestion = (id) => {
     id = parseInt(id);
+    if (!questions) return;
     return questions.find((q) => q.id === id);
   };
 
