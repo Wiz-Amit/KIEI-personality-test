@@ -20,6 +20,7 @@ const OptionsA = ({ question, onChange }) => {
     <div className="options d-flex flex-column">
       {question.options.map((option, i) => (
         <Button
+          key={i + 1}
           variant={value === i + 1 ? "primary" : "outline-primary"}
           className="mt-2"
           onClick={() => choose(i + 1)}
