@@ -4,9 +4,11 @@ const InventoryContext = createContext({
   user: {},
   questions: [],
   questionGroups: [],
-  answers: [],
   result: {},
   setUser: ({ name, email }) => {},
+  setAnswer: ({ id, answer }) => {},
+  getMaxId: () => {},
+  getQuestion: (id) => {},
 });
 
 export default InventoryContext;

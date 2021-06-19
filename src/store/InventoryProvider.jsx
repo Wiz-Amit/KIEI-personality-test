@@ -11,14 +11,38 @@ const QUESTIONS = [
 
 const InventoryProvider = (props) => {
   const [user, setUser] = useState("");
+  const [questions, setQuestions] = useState(QUESTIONS);
+
+  const setAnswer = (id, answer) => {
+    id = parseInt(id);
+
+    setQuestions((prevQuestions) => {
+      const [question] = prevQuestions.filter((q) => q.id === id);
+      return [
+        ...prevQuestions.filter((q) => q.id !== id),
+        { ...question, answer },
+      ];
+    });
+  };
+
+  const getMaxId = () => {
+    return Math.max(...questions.map((q) => q.id));
+  };
+
+  const getQuestion = (id) => {
+    id = parseInt(id);
+    return questions.find((q) => q.id === id);
+  };
 
   const inventorCtx = {
     user,
-    questions: [],
+    questions,
     questionGroups: [],
-    answers: [],
     result: {},
     setUser,
+    setAnswer,
+    getMaxId,
+    getQuestion,
   };
 
   return (

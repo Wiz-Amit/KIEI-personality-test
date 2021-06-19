@@ -8,7 +8,7 @@ const Navigation = (props) => {
       activeKey="/home"
     >
       <Nav.Item>
-        <Nav.Link className="navbar-brand" as={Link} to="#">
+        <Nav.Link className="navbar-brand" as={Link} to="/">
           <span className="font-weight-bold">K. I. E. I.</span>
         </Nav.Link>
       </Nav.Item>

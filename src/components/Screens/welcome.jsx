@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 import InventoryContext from "../../store/inventory-context";
 import InvisibleCard from "../UI/InvisibleCard";
 
 const Welcome = (props) => {
+  const history = useHistory();
   const inventoryCtx = useContext(InventoryContext);
 
   const formSubmissionHandler = (e) => {
@@ -13,6 +15,8 @@ const Welcome = (props) => {
       email: e.target.email.value,
     };
     inventoryCtx.setUser(user);
+
+    history.push("/questions/1");
   };
 
   return (
