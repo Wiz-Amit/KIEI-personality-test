@@ -26,6 +26,13 @@ function App() {
               <Welcome />
             </Route>
           </Switch>
+
+          <p className="text-muted text-center">
+            Developed by{" "}
+            <a href="https://wizamit.com" target="_blank">
+              WizAmit (Amit Hazra)
+            </a>
+          </p>
         </Container>
       </InventoryProvider>
     </Fragment>
