@@ -67,7 +67,7 @@ const QUESTIONS = [
   {
     id: 6,
     block: "a",
-    text: "Which one o the following types of persons do you like most to have as your friends?",
+    text: "Which one of the following types of persons do you like most to have as your friends?",
     options: [
       "Persons who will never do anything without planning",
       "Persons who will do planning in most of the occasions",
