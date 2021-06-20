@@ -10,9 +10,9 @@ const Result = (props) => {
   const inventoryCtx = useContext(InventoryContext);
   const score = inventoryCtx.getScore();
 
-  // if (!score) {
-  //   return <Redirect to="/" />;
-  // }
+  if (!score) {
+    return <Redirect to="/" />;
+  }
 
   let personalityImage;
   let personality;
