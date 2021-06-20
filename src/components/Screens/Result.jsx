@@ -8,6 +8,7 @@ import { Redirect } from "react-router-dom";
 
 const Result = (props) => {
   const inventoryCtx = useContext(InventoryContext);
+  const questions = inventoryCtx.questions;
   const score = inventoryCtx.getScore();
 
   if (!score) {
@@ -66,13 +67,27 @@ const Result = (props) => {
         </p>
       </InvisibleCard>
 
-      {/* <ul>
-        {inventoryCtx.questions.map((q) => (
-          <li key={q.id}>
-            {q.id}: {q.answer}
+      <ul>
+        {["a", "b", "c", "d", "e"].map((block) => (
+          <li className="">
+            Block {block}:{" "}
+            {questions
+              .filter((q) => q.block === block)
+              .reduce((s, q) => {
+                if (q.answer) {
+                  console.log(q);
+                  s += q.scores[q.answer - 1];
+                }
+                return s;
+              }, 0)}
           </li>
         ))}
-      </ul> */}
+        {questions.map((q) => (
+          <li key={q.id}>
+            {q.id}: {q.answer} (Score: {q.scores[q.answer - 1]})
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
