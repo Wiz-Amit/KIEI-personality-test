@@ -10,6 +10,7 @@ const Navigation = (props) => {
       <Nav.Item>
         <Nav.Link className="navbar-brand" as={Link} to="/">
           <span className="font-weight-bold">K. I. E. I.</span>
+          <span className="text-muted"> (Beta)</span>
         </Nav.Link>
       </Nav.Item>
     </Nav>

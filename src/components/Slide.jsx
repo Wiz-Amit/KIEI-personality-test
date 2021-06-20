@@ -43,7 +43,11 @@ const Slide = (props) => {
         className="actions mt-2 text-center m-auto"
         style={{ maxWidth: "400px" }}
       >
-        <QuestionCard question={question} updateAnswer={updateAnswer} />
+        <QuestionCard
+          question={question}
+          updateAnswer={updateAnswer}
+          questionCount={inventoryCtx.getMaxId()}
+        />
 
         <ButtonGroup className="mt-4">
           <Button onClick={goToPrevSlide} type="button" variant="primary">

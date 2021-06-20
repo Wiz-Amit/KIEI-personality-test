@@ -9,6 +9,7 @@ const InventoryContext = createContext({
   setAnswer: ({ id, answer }) => {},
   getMaxId: () => {},
   getQuestion: (id) => {},
+  getScore: () => {},
 });
 
 export default InventoryContext;

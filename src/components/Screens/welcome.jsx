@@ -28,10 +28,12 @@ const Welcome = (props) => {
 
   return (
     <InvisibleCard title="K. I. E. I. Personality assessment">
-      <div
-        className="actions mt-2 text-center m-auto"
-        style={{ maxWidth: "400px" }}
-      >
+      <div className="text-center m-auto" style={{ maxWidth: "400px" }}>
+        <p className="text-muted">
+          Begin test and answer all questions to finish the Personality
+          assessment
+        </p>
+
         <Form onSubmit={formSubmissionHandler}>
           <InputGroup className="mb-3">
             <FormControl
@@ -46,7 +48,7 @@ const Welcome = (props) => {
             <FormControl
               type="email"
               name="email"
-              placeholder="Email"
+              placeholder="Email (Optional)"
               aria-label="Email"
             />
           </InputGroup>
