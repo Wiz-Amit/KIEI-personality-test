@@ -67,7 +67,7 @@ const Result = (props) => {
         </p>
       </InvisibleCard>
 
-      <ul>
+      <ul className="mt-5">
         {["a", "b", "c", "d", "e"].map((block) => (
           <li className="">
             Block {block}:{" "}
@@ -76,7 +76,7 @@ const Result = (props) => {
               .reduce((s, q) => {
                 if (q.answer) {
                   console.log(q);
-                  s += q.scores[q.answer - 1];
+                  s += q.scores.findIndex((ans) => ans === q.answer) + 1;
                 }
                 return s;
               }, 0)}
@@ -84,7 +84,8 @@ const Result = (props) => {
         ))}
         {questions.map((q) => (
           <li key={q.id}>
-            {q.id}: {q.answer} (Score: {q.scores[q.answer - 1]})
+            {q.id}: {q.answer} (Score:{" "}
+            {q.scores.findIndex((ans) => ans === q.answer) + 1})
           </li>
         ))}
       </ul>
