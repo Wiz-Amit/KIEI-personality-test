@@ -573,7 +573,7 @@ const InventoryProvider = (props) => {
     return questions.reduce((s, q) => {
       if (q.answer) {
         console.log(q);
-        s += q.answer * q.scores[q.answer - 1];
+        s += q.scores[q.answer - 1];
       }
       return s;
     }, 0);
