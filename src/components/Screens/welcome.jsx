@@ -25,6 +25,11 @@ const Welcome = (props) => {
 
     // Redirect to first unfilled question
     const unfilledQuestion = inventoryCtx.questions.find((q) => !q.answer);
+
+    if (!unfilledQuestion) {
+      history.push(`/result`);
+    }
+
     history.push(`/questions/${unfilledQuestion.id}`);
   };
 

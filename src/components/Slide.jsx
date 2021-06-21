@@ -90,7 +90,7 @@ const Slide = (props) => {
           onClick={viewResult}
           type="button"
           variant="link"
-          className="px-5 mt-3 text-muted"
+          className="px-5 mt-3 text-muted btn-sm"
         >
           View Result
         </Button>
