@@ -89,8 +89,8 @@ const Slide = (props) => {
         <Button
           onClick={viewResult}
           type="button"
-          variant="primary"
-          className="px-5 mt-3"
+          variant="link"
+          className="px-5 mt-3 text-muted"
         >
           View Result
         </Button>

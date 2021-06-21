@@ -27,7 +27,7 @@ function App() {
             </Route>
           </Switch>
 
-          <p className="text-muted text-center">
+          <p className="text-muted text-center mt-2">
             Developed by{" "}
             <a href="https://wizamit.com" target="_blank">
               WizAmit (Amit Hazra)

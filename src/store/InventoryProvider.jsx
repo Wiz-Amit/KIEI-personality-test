@@ -579,6 +579,11 @@ const InventoryProvider = (props) => {
     }, 0);
   };
 
+  const testAgain = () => {
+    setQuestions(QUESTIONS);
+    history.push("/");
+  };
+
   const inventorCtx = {
     user,
     questions,
@@ -589,6 +594,7 @@ const InventoryProvider = (props) => {
     getMaxId,
     getQuestion,
     getScore,
+    testAgain,
   };
 
   return (

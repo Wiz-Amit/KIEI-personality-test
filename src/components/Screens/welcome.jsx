@@ -23,7 +23,9 @@ const Welcome = (props) => {
       inventoryCtx.setUser(user);
     }
 
-    history.push("/questions/1");
+    // Redirect to first unfilled question
+    const unfilledQuestion = inventoryCtx.questions.find((q) => !q.answer);
+    history.push(`/questions/${unfilledQuestion.id}`);
   };
 
   return (
