@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { Fragment, useContext } from "react";
 import InventoryContext from "../../store/inventory-context";
 import InvisibleCard from "../UI/InvisibleCard";
 import introvertImage from "../../assets/introvert.svg";
@@ -6,6 +6,7 @@ import ambivertImage from "../../assets/ambivert.svg";
 import extrovertImage from "../../assets/extrovert.svg";
 import { Redirect } from "react-router-dom";
 import { Button, Accordion, Card } from "react-bootstrap";
+import { Helmet } from "react-helmet";
 
 const Result = (props) => {
   const inventoryCtx = useContext(InventoryContext);
@@ -55,85 +56,99 @@ const Result = (props) => {
   const title = `${inventoryCtx.user.name}'s personality: ${personality}`;
 
   return (
-    <div className="result">
-      <InvisibleCard title={title}>
-        <img
-          src={personalityImage}
-          alt={personality}
-          style={{ maxHeight: "50vh" }}
+    <Fragment>
+      <Helmet>
+        <link
+          rel="canonical"
+          href="https://kiei-personality-assessment.wizamit.com/result"
         />
+        <title>KIEI Assessment: Result</title>
+        <meta
+          name="description"
+          content="Result of K.I.E.I (Kundu Introversion, Extroversion Inventory) for the assessment of personality types. Personality test developed by WizAmit."
+        />
+      </Helmet>
 
-        <p className="text-muted text-center mt-3">
-          K. I. E. I. Score: {score}
-        </p>
+      <div className="result">
+        <InvisibleCard title={title}>
+          <img
+            src={personalityImage}
+            alt={personality}
+            style={{ maxHeight: "50vh" }}
+          />
 
-        <div className="actions text-center">
-          <Button onClick={inventoryCtx.testAgain} variant="outline-primary">
-            Test again
-          </Button>
-        </div>
-      </InvisibleCard>
+          <p className="text-muted text-center mt-3">
+            K. I. E. I. Score: {score}
+          </p>
 
-      <Accordion>
-        <Card>
-          <Card.Header>
-            <Accordion.Toggle as={Button} variant="link" eventKey="0">
-              Show block scores
-            </Accordion.Toggle>
-          </Card.Header>
-          <Accordion.Collapse eventKey="0">
-            <Card.Body>
-              <ul className="mt-5">
-                {["a", "b", "c", "d", "e"].map((block) => (
-                  <li key={block} className="">
-                    <span className="text-muted text-uppercase">
-                      Block {block}:
-                    </span>{" "}
-                    {questions
-                      .filter((q) => q.block === block)
-                      .reduce((s, q) => {
-                        if (q.answer) {
-                          console.log(q);
-                          s +=
-                            q.scores.findIndex((ans) => ans === q.answer) + 1;
-                        }
-                        return s;
-                      }, 0)}
-                  </li>
-                ))}
-              </ul>
-            </Card.Body>
-          </Accordion.Collapse>
-        </Card>
-        <Card>
-          <Card.Header>
-            <Accordion.Toggle as={Button} variant="link" eventKey="1">
-              Show individual question scores
-            </Accordion.Toggle>
-          </Card.Header>
-          <Accordion.Collapse eventKey="1">
-            <Card.Body>
-              <ul className="mt-5">
-                {questions
-                  .sort((q1, q2) => q1.id - q2.id)
-                  .map((q) => (
-                    <li
-                      className={`${q.answer ? "" : "text-muted"}`}
-                      key={q.id}
-                    >
+          <div className="actions text-center">
+            <Button onClick={inventoryCtx.testAgain} variant="outline-primary">
+              Test again
+            </Button>
+          </div>
+        </InvisibleCard>
+
+        <Accordion>
+          <Card>
+            <Card.Header>
+              <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                Show block scores
+              </Accordion.Toggle>
+            </Card.Header>
+            <Accordion.Collapse eventKey="0">
+              <Card.Body>
+                <ul className="mt-5">
+                  {["a", "b", "c", "d", "e"].map((block) => (
+                    <li key={block} className="">
                       <span className="text-muted text-uppercase">
-                        Block {q.block}:
+                        Block {block}:
                       </span>{" "}
-                      Q{q.id}. {q.answer} (Score:{" "}
-                      {q.scores.findIndex((ans) => ans === q.answer) + 1})
+                      {questions
+                        .filter((q) => q.block === block)
+                        .reduce((s, q) => {
+                          if (q.answer) {
+                            console.log(q);
+                            s +=
+                              q.scores.findIndex((ans) => ans === q.answer) + 1;
+                          }
+                          return s;
+                        }, 0)}
                     </li>
                   ))}
-              </ul>
-            </Card.Body>
-          </Accordion.Collapse>
-        </Card>
-      </Accordion>
-    </div>
+                </ul>
+              </Card.Body>
+            </Accordion.Collapse>
+          </Card>
+          <Card>
+            <Card.Header>
+              <Accordion.Toggle as={Button} variant="link" eventKey="1">
+                Show individual question scores
+              </Accordion.Toggle>
+            </Card.Header>
+            <Accordion.Collapse eventKey="1">
+              <Card.Body>
+                <ul className="mt-5">
+                  {questions
+                    .sort((q1, q2) => q1.id - q2.id)
+                    .map((q) => (
+                      <li
+                        className={`${q.answer ? "" : "text-muted"}`}
+                        key={q.id}
+                      >
+                        <span className="text-muted text-uppercase">
+                          Block {q.block}:
+                        </span>{" "}
+                        Q{q.id}. {q.answer} (Score:{" "}
+                        {q.scores.findIndex((ans) => ans === q.answer) + 1})
+                      </li>
+                    ))}
+                </ul>
+              </Card.Body>
+            </Accordion.Collapse>
+          </Card>
+        </Accordion>
+      </div>
+    </Fragment>
   );
 };
 

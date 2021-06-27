@@ -1,6 +1,7 @@
-import { useContext } from "react";
+import React, { Fragment, useContext } from "react";
 import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import InventoryContext from "../../store/inventory-context";
 import InvisibleCard from "../UI/InvisibleCard";
 
@@ -34,38 +35,52 @@ const Welcome = (props) => {
   };
 
   return (
-    <InvisibleCard title="K. I. E. I. Personality assessment">
-      <div className="text-center m-auto" style={{ maxWidth: "400px" }}>
-        <p className="text-muted">
-          Begin test and answer all questions to finish the Personality
-          assessment
-        </p>
+    <Fragment>
+      <Helmet>
+        <link
+          rel="canonical"
+          href="https://kiei-personality-assessment.wizamit.com/"
+        />
+        <title>KIEI Personality Assessment</title>
+        <meta
+          name="description"
+          content="K.I.E.I (Kundu Introversion, Extroversion Inventory) for the assessment of personality types. Personality test developed by WizAmit."
+        />
+      </Helmet>
 
-        <Form onSubmit={formSubmissionHandler}>
-          <InputGroup className="mb-3">
-            <FormControl
-              required
-              name="name"
-              placeholder="Name"
-              aria-label="Name"
-            />
-          </InputGroup>
+      <InvisibleCard title="K. I. E. I. Personality assessment">
+        <div className="text-center m-auto" style={{ maxWidth: "400px" }}>
+          <p className="text-muted">
+            Begin test and answer all questions to finish the Personality
+            assessment
+          </p>
 
-          <InputGroup className="mb-3">
-            <FormControl
-              type="email"
-              name="email"
-              placeholder="Email (Optional)"
-              aria-label="Email"
-            />
-          </InputGroup>
+          <Form onSubmit={formSubmissionHandler}>
+            <InputGroup className="mb-3">
+              <FormControl
+                required
+                name="name"
+                placeholder="Name"
+                aria-label="Name"
+              />
+            </InputGroup>
 
-          <Button type="submit" className="btn-primary btn-block px-5">
-            Begin Test
-          </Button>
-        </Form>
-      </div>
-    </InvisibleCard>
+            <InputGroup className="mb-3">
+              <FormControl
+                type="email"
+                name="email"
+                placeholder="Email (Optional)"
+                aria-label="Email"
+              />
+            </InputGroup>
+
+            <Button type="submit" className="btn-primary btn-block px-5">
+              Begin Test
+            </Button>
+          </Form>
+        </div>
+      </InvisibleCard>
+    </Fragment>
   );
 };
 

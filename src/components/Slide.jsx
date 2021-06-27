@@ -1,9 +1,10 @@
-import { useContext } from "react";
+import { useContext, Fragment } from "react";
 import { Button, ButtonGroup } from "react-bootstrap";
 import { useHistory, useParams } from "react-router-dom";
 import InventoryContext from "../store/inventory-context";
 import InvisibleCard from "./UI/InvisibleCard";
 import QuestionCard from "./QuestionCard";
+import { Helmet } from "react-helmet";
 
 const Slide = (props) => {
   const history = useHistory();
@@ -38,64 +39,78 @@ const Slide = (props) => {
   }
 
   return (
-    <InvisibleCard title={question.text}>
-      <div
-        className="actions mt-2 text-center m-auto"
-        style={{ maxWidth: "400px" }}
-      >
-        <QuestionCard
-          question={question}
-          updateAnswer={updateAnswer}
-          questionCount={inventoryCtx.getMaxId()}
+    <Fragment>
+      <Helmet>
+        <link
+          rel="canonical"
+          href={`"https://kiei-personality-assessment.wizamit.com/questions/${id}"`}
         />
+        <title>KIEI: Question {id}</title>
+        <meta
+          name="description"
+          content="Questions of K.I.E.I (Kundu Introversion, Extroversion Inventory) for the assessment of personality types. Personality test developed by WizAmit."
+        />
+      </Helmet>
 
-        <ButtonGroup className="mt-4">
-          <Button onClick={goToPrevSlide} type="button" variant="primary">
-            Previous
-          </Button>
+      <InvisibleCard title={question.text}>
+        <div
+          className="actions mt-2 text-center m-auto"
+          style={{ maxWidth: "400px" }}
+        >
+          <QuestionCard
+            question={question}
+            updateAnswer={updateAnswer}
+            questionCount={inventoryCtx.getMaxId()}
+          />
+
+          <ButtonGroup className="mt-4">
+            <Button onClick={goToPrevSlide} type="button" variant="primary">
+              Previous
+            </Button>
+
+            <Button
+              disabled
+              type="button"
+              variant="primary"
+              className="d-none d-md-inline-block"
+            >
+              Question {question.id}
+            </Button>
+
+            {question.id === inventoryCtx.getMaxId() ? (
+              <Button
+                disabled={!question.answer}
+                onClick={viewResult}
+                type="button"
+                variant="primary"
+                className="px-5"
+              >
+                View Result
+              </Button>
+            ) : (
+              <Button
+                disabled={!question.answer}
+                onClick={goToNextSlide}
+                type="button"
+                variant="primary"
+                className="px-5"
+              >
+                Next
+              </Button>
+            )}
+          </ButtonGroup>
 
           <Button
-            disabled
+            onClick={viewResult}
             type="button"
-            variant="primary"
-            className="d-none d-md-inline-block"
+            variant="link"
+            className="px-5 mt-3 text-muted btn-sm"
           >
-            Question {question.id}
+            View Result
           </Button>
-
-          {question.id === inventoryCtx.getMaxId() ? (
-            <Button
-              disabled={!question.answer}
-              onClick={viewResult}
-              type="button"
-              variant="primary"
-              className="px-5"
-            >
-              View Result
-            </Button>
-          ) : (
-            <Button
-              disabled={!question.answer}
-              onClick={goToNextSlide}
-              type="button"
-              variant="primary"
-              className="px-5"
-            >
-              Next
-            </Button>
-          )}
-        </ButtonGroup>
-
-        <Button
-          onClick={viewResult}
-          type="button"
-          variant="link"
-          className="px-5 mt-3 text-muted btn-sm"
-        >
-          View Result
-        </Button>
-      </div>
-    </InvisibleCard>
+        </div>
+      </InvisibleCard>
+    </Fragment>
   );
 };
 
