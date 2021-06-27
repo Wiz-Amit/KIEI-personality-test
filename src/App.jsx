@@ -12,7 +12,12 @@ function App() {
     <Fragment>
       <InventoryProvider>
         <Navigation />
-        <Container className="container-fluid w-100">
+        <Container
+          className="container-fluid w-100 h-100 d-flex justify-content-between align-items-center flex-column"
+          style={{
+            minHeight: "88vh",
+          }}
+        >
           <Switch>
             <Route strict path="/result">
               <Result />

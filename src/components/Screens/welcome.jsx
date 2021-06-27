@@ -80,6 +80,18 @@ const Welcome = (props) => {
           </Form>
         </div>
       </InvisibleCard>
+
+      {/* <InvisibleCard title="How does it work?">
+        <div className="text-center">
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://webcache.googleusercontent.com/search?q=cache:n5AMriM_fN0J:dl.icdst.org/pdfs/files3/da1471d078a03fbdfb2b8cce83b1ee8f.pdf+&cd=3&hl=en&ct=clnk&gl=in"
+          >
+            Read more
+          </a>
+        </div>
+      </InvisibleCard> */}
     </Fragment>
   );
 };
