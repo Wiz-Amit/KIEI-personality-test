@@ -5,6 +5,8 @@ import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
 import firebase from "firebase/app";
 import "firebase/analytics";
+import store from "./store/index";
+import { Provider } from "react-redux";
 
 var firebaseConfig = {
   apiKey: "AIzaSyAc-sxLK-LsASKXycPZGOdCj2437jhfrUs",
@@ -22,7 +24,9 @@ firebase.analytics();
 
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </BrowserRouter>,
   document.getElementById("root")
 );

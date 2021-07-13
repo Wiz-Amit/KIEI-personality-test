@@ -1,20 +1,29 @@
-import { useContext, Fragment } from "react";
+import { Fragment } from "react";
 import { Button, ButtonGroup } from "react-bootstrap";
 import { useHistory, useParams } from "react-router-dom";
-import InventoryContext from "../store/inventory-context";
 import InvisibleCard from "./UI/InvisibleCard";
 import QuestionCard from "./QuestionCard";
 import { Helmet } from "react-helmet";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  inventoryActions,
+  selectActiveQuestion,
+  selectMaxId,
+} from "../store/inventory-slice";
 
 const Slide = (props) => {
+  const dispatch = useDispatch();
   const history = useHistory();
   const { id } = useParams();
-  const inventoryCtx = useContext(InventoryContext);
-  const question = inventoryCtx.getQuestion(+id);
-  console.log({ questions: inventoryCtx.questions, question, id });
+
+  dispatch(inventoryActions.setActiveQuestion(id));
+  const question = useSelector(selectActiveQuestion);
+  const maxId = useSelector(selectMaxId);
 
   const updateAnswer = (answer) => {
-    inventoryCtx.setAnswer(question.id, answer);
+    dispatch(inventoryActions.setAnswer({ id: question.id, answer }));
+    // goToNextSlide();
+    // Unable to remove focus from active button
   };
 
   const goToPrevSlide = () => {
@@ -23,10 +32,7 @@ const Slide = (props) => {
   };
 
   const goToNextSlide = () => {
-    const id =
-      question.id + 1 <= inventoryCtx.getMaxId()
-        ? question.id + 1
-        : inventoryCtx.getMaxId();
+    const id = question.id + 1 <= maxId ? question.id + 1 : maxId;
     history.push(`/questions/${id}`);
   };
 
@@ -60,7 +66,7 @@ const Slide = (props) => {
           <QuestionCard
             question={question}
             updateAnswer={updateAnswer}
-            questionCount={inventoryCtx.getMaxId()}
+            questionCount={maxId}
           />
 
           <ButtonGroup className="mt-4">
@@ -77,7 +83,7 @@ const Slide = (props) => {
               Question {question.id}
             </Button>
 
-            {question.id === inventoryCtx.getMaxId() ? (
+            {question.id === maxId ? (
               <Button
                 disabled={!question.answer}
                 onClick={viewResult}
@@ -100,14 +106,14 @@ const Slide = (props) => {
             )}
           </ButtonGroup>
 
-          <Button
+          {/* <Button
             onClick={viewResult}
             type="button"
             variant="link"
             className="px-5 mt-3 text-muted btn-sm"
           >
             View Result
-          </Button>
+          </Button> */}
         </div>
       </InvisibleCard>
     </Fragment>

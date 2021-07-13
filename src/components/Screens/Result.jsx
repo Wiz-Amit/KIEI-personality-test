@@ -1,19 +1,28 @@
-import { Fragment, useContext } from "react";
-import InventoryContext from "../../store/inventory-context";
+import { Fragment } from "react";
 import InvisibleCard from "../UI/InvisibleCard";
 import introvertImage from "../../assets/introvert.svg";
 import ambivertImage from "../../assets/ambivert.svg";
 import extrovertImage from "../../assets/extrovert.svg";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { Button, Accordion, Card } from "react-bootstrap";
 import { Helmet } from "react-helmet";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  inventoryActions,
+  selectQuestions,
+  selectScore,
+  selectUser,
+} from "../../store/inventory-slice";
 
 const Result = (props) => {
-  const inventoryCtx = useContext(InventoryContext);
-  const questions = inventoryCtx.questions;
-  const score = inventoryCtx.getScore();
+  const history = useHistory();
+  const dispatch = useDispatch();
 
-  if (!score) {
+  const questions = [...useSelector(selectQuestions)];
+  const score = useSelector(selectScore);
+  const user = useSelector(selectUser);
+
+  if (score === null) {
     return <Redirect to="/" />;
   }
 
@@ -53,7 +62,12 @@ const Result = (props) => {
     personality += " Introvert";
   }
 
-  const title = `${inventoryCtx.user.name}'s personality: ${personality}`;
+  const title = `${user.name}'s personality: ${personality}`;
+
+  const testAgainHandler = () => {
+    dispatch(inventoryActions.resetTest());
+    history.push("/");
+  };
 
   return (
     <Fragment>
@@ -82,7 +96,7 @@ const Result = (props) => {
           </p>
 
           <div className="actions text-center">
-            <Button onClick={inventoryCtx.testAgain} variant="outline-primary">
+            <Button onClick={testAgainHandler} variant="outline-primary">
               Test again
             </Button>
           </div>

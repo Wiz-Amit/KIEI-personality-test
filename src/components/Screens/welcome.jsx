@@ -1,32 +1,32 @@
-import React, { Fragment, useContext } from "react";
+import React, { Fragment } from "react";
 import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import InventoryContext from "../../store/inventory-context";
 import InvisibleCard from "../UI/InvisibleCard";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectFirstUnansweredQuestion,
+  setUser,
+} from "../../store/inventory-slice";
 
 const Welcome = (props) => {
   const history = useHistory();
-  const inventoryCtx = useContext(InventoryContext);
+  const dispatch = useDispatch();
+
+  const unfilledQuestion = useSelector(selectFirstUnansweredQuestion);
 
   const formSubmissionHandler = (e) => {
     e.preventDefault();
-    const user = {
+    const userData = {
       name: e.target.name.value,
       email: e.target.email.value,
     };
 
-    if (
-      !inventoryCtx.user ||
-      user.name !== inventoryCtx.user.name ||
-      user.email !== inventoryCtx.user.email
-    ) {
-      inventoryCtx.setUser(user);
-    }
+    dispatch(setUser(userData));
+
+    console.log({ unfilledQuestion });
 
     // Redirect to first unfilled question
-    const unfilledQuestion = inventoryCtx.questions.find((q) => !q.answer);
-
     if (!unfilledQuestion) {
       history.push(`/result`);
     }
