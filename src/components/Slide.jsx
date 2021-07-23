@@ -22,9 +22,10 @@ const Slide = (props) => {
 
   const updateAnswer = (answer) => {
     dispatch(inventoryActions.setAnswer({ id: question.id, answer }));
-    setTimeout(() => {
-      goToNextSlide();
-    }, 1000);
+    // setTimeout(() => {
+    //   goToNextSlide();
+    // }, 1000);
+    // * Auto next is causing lots of issues e.g. tooltips and other hover effects
   };
 
   const goToPrevSlide = () => {
