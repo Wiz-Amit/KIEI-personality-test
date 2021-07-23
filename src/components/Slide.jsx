@@ -22,8 +22,9 @@ const Slide = (props) => {
 
   const updateAnswer = (answer) => {
     dispatch(inventoryActions.setAnswer({ id: question.id, answer }));
-    // goToNextSlide();
-    // Unable to remove focus from active button
+    setTimeout(() => {
+      goToNextSlide();
+    }, 1000);
   };
 
   const goToPrevSlide = () => {

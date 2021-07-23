@@ -96,8 +96,7 @@
           }
         }
       }
-      &.active,
-      &:hover {
+      &.active {
         animation: angry 1s linear;
         div {
           &:before {
@@ -142,8 +141,7 @@
           }
         }
       }
-      &.active,
-      &:hover {
+      &.active {
         div {
           &:before,
           &:after {
@@ -177,8 +175,7 @@
           --b: var(--m, var(--normal-mouth));
         }
       }
-      &.active,
-      &:hover {
+      &.active {
         div {
           &:before {
             --middle-s-y: 0.35;
@@ -226,8 +223,7 @@
           }
         }
       }
-      &.active,
-      &:hover {
+      &.active {
         div {
           svg {
             &.mouth {
@@ -263,8 +259,7 @@
           }
         }
       }
-      &.active,
-      &:hover {
+      &.active {
         div {
           &:after {
             --middle-s-x: 0.95;
@@ -280,8 +275,7 @@
         transform: scale(0.925);
       }
     }
-    &.active,
-    &:hover {
+    &.active {
       --sb: var(--active);
       --sh: var(--active-shadow);
       --m: var(--active-mouth);

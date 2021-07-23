@@ -8,7 +8,7 @@ import { Button, Accordion, Card } from "react-bootstrap";
 import { Helmet } from "react-helmet";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  inventoryActions,
+  resetTest,
   selectQuestions,
   selectScore,
   selectUser,
@@ -65,7 +65,7 @@ const Result = (props) => {
   const title = `${user.name}'s personality: ${personality}`;
 
   const testAgainHandler = () => {
-    dispatch(inventoryActions.resetTest());
+    dispatch(resetTest());
     history.push("/");
   };
 
@@ -121,7 +121,7 @@ const Result = (props) => {
                         .filter((q) => q.block === block)
                         .reduce((s, q) => {
                           if (q.answer) {
-                            console.log(q);
+                            // console.log(q);
                             s +=
                               q.scores.findIndex((ans) => ans === q.answer) + 1;
                           }

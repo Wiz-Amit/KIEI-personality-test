@@ -13,3 +13,12 @@ body {
   margin: 0;
   background-color: whitesmoke;
 }
+
+.btn {
+  &:focus,
+  &:active {
+    outline: none !important;
+    outline-offset: none !important;
+    box-shadow: none !important;
+  }
+}

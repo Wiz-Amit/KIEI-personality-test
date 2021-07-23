@@ -31,6 +31,8 @@ const inventorySlice = createSlice({
 
     updateQuestions: (state, action) => {
       state.questions = [...action.payload];
+
+      localStorage.setItem("questions", JSON.stringify(state.questions));
     },
 
     setAnswer: (state, action) => {
@@ -42,10 +44,6 @@ const inventorySlice = createSlice({
       if (index !== null) state.questions[index].answer = answer;
 
       localStorage.setItem("questions", JSON.stringify(state.questions));
-    },
-
-    resetTest: (state) => {
-      state.questions = QUESTIONS;
     },
 
     setActiveQuestion: (state, action) => {
@@ -95,6 +93,12 @@ export const selectScore = createSelector([selectQuestions], (questions) => {
 
 // * Thunks
 
+export const resetTest = () => {
+  return (dispatch) => {
+    dispatch(inventoryActions.updateQuestions(QUESTIONS));
+  };
+};
+
 export const setUser = (userData) => {
   return (dispatch) => {
     const storedUser = localStorage.getItem("user")
@@ -105,9 +109,10 @@ export const setUser = (userData) => {
     if (
       !storedUser ||
       userData.name !== storedUser.name ||
-      userData.email !== storedUser.email
+      (userData.email && userData.email !== storedUser.email)
     ) {
       dispatch(inventoryActions.updateQuestions(QUESTIONS));
+      dispatch(inventoryActions.setActiveQuestion(1));
       dispatch(inventoryActions.updateUser(userData));
     } else {
       const questions = localStorage.getItem("questions")

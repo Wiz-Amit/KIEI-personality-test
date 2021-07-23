@@ -8,12 +8,26 @@ import {
   selectFirstUnansweredQuestion,
   setUser,
 } from "../../store/inventory-slice";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const Welcome = (props) => {
   const history = useHistory();
   const dispatch = useDispatch();
+  const [userData, setUserData] = useState();
 
   const unfilledQuestion = useSelector(selectFirstUnansweredQuestion);
+
+  useEffect(() => {
+    if (userData) {
+      // Redirect to first unfilled question
+      if (!unfilledQuestion) {
+        history.push(`/result`);
+      }
+
+      history.push(`/questions/${unfilledQuestion.id}`);
+    }
+  }, [userData, history, unfilledQuestion]);
 
   const formSubmissionHandler = (e) => {
     e.preventDefault();
@@ -23,15 +37,7 @@ const Welcome = (props) => {
     };
 
     dispatch(setUser(userData));
-
-    console.log({ unfilledQuestion });
-
-    // Redirect to first unfilled question
-    if (!unfilledQuestion) {
-      history.push(`/result`);
-    }
-
-    history.push(`/questions/${unfilledQuestion.id}`);
+    setUserData(userData);
   };
 
   return (
