@@ -61,6 +61,26 @@ const Slide = (props) => {
 
       <InvisibleCard title={question.text}>
         <div
+          className="progress"
+          style={{
+            height: "5px",
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+          }}
+        >
+          <div
+            className="progress-bar bg-success"
+            role="progressbar"
+            style={{ width: ((question.id - 1) / maxId) * 100 + "%" }}
+            aria-valuenow="25"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          ></div>
+        </div>
+
+        <div
           className="actions mt-2 text-center m-auto"
           style={{ maxWidth: "400px" }}
         >

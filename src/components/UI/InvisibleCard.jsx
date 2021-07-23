@@ -4,7 +4,7 @@ const InvisibleCard = (props) => {
   return (
     <Card
       className="my-2 my-md-3 p-4 card-invisible border-0 overflow-hidden w-100"
-      style={{ borderRadius: "0.8rem" }}
+      style={{ borderRadius: "0.8rem", position: "relative" }}
     >
       <Card.Header
         className="text-center border-0 bg-white"
