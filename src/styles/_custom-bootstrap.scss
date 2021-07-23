@@ -5,3 +5,11 @@
 @import "~bootstrap";
 
 @import "./bootswatch";
+
+// on touch devices
+@media (hover: none) {
+  .btn-outline-primary:hover {
+    color: #158cba;
+    background-color: transparent;
+  }
+}
