@@ -6,6 +6,7 @@ import InvisibleCard from "../UI/InvisibleCard";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectFirstUnansweredQuestion,
+  selectMaxId,
   setUser,
 } from "../../store/inventory-slice";
 import { useState } from "react";
@@ -14,6 +15,7 @@ import { useEffect } from "react";
 const Welcome = (props) => {
   const history = useHistory();
   const dispatch = useDispatch();
+  const maxId = useSelector(selectMaxId);
   const [userData, setUserData] = useState();
 
   const unfilledQuestion = useSelector(selectFirstUnansweredQuestion);
@@ -22,12 +24,13 @@ const Welcome = (props) => {
     if (userData) {
       // Redirect to first unfilled question
       if (!unfilledQuestion) {
-        history.push(`/result`);
+        // history.push(`/result`);
+        history.push(`/questions/${maxId}`);
       }
 
       history.push(`/questions/${unfilledQuestion.id}`);
     }
-  }, [userData, history, unfilledQuestion]);
+  }, [userData, history, unfilledQuestion, maxId]);
 
   const formSubmissionHandler = (e) => {
     e.preventDefault();
