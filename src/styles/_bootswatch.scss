@@ -43,6 +43,7 @@
   &:not(.disabled):hover {
     margin-top: 1px;
     border-bottom-width: 3px;
+    border-top: 2px solid transparent !important;
   }
 
   &:not(.disabled):active {
@@ -188,14 +189,15 @@
     font-weight: 700;
     text-transform: uppercase;
 
-    &:hover,
-    &:focus {
+    &:not(.disabled):hover,
+    &:not(.disabled):focus {
       top: 1px;
       border-bottom-width: 3px;
+      border-top: 2px solid transparent !important;
       text-decoration: none;
     }
 
-    &:active {
+    &:not(.disabled):active {
       top: 2px;
       border-bottom-width: 2px;
     }

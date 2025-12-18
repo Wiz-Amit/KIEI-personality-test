@@ -92,7 +92,13 @@ const Slide = (props) => {
           />
 
           <ButtonGroup className="mt-4">
-            <Button onClick={goToPrevSlide} type="button" variant="primary">
+            <Button
+              onClick={goToPrevSlide}
+              type="button"
+              variant="primary"
+              disabled={question.id === 1}
+              className={`${question.id === 1 ? "disabled" : ""}`}
+            >
               Previous
             </Button>
 
@@ -100,7 +106,7 @@ const Slide = (props) => {
               disabled
               type="button"
               variant="primary"
-              className="d-none d-md-inline-block"
+              className="d-none d-md-inline-block disabled"
             >
               Question {question.id}
             </Button>
@@ -111,7 +117,7 @@ const Slide = (props) => {
                 onClick={viewResult}
                 type="button"
                 variant="primary"
-                className="px-5"
+                className={`px-5 ${!question.answer ? "disabled" : ""}`}
               >
                 View Result
               </Button>
@@ -121,7 +127,7 @@ const Slide = (props) => {
                 onClick={goToNextSlide}
                 type="button"
                 variant="primary"
-                className="px-5"
+                className={`px-5 ${!question.answer ? "disabled" : ""}`}
               >
                 Next
               </Button>
