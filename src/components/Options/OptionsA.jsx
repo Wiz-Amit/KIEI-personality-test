@@ -22,7 +22,7 @@ const OptionsA = ({ question, onChange }) => {
         <Button
           key={i + 1}
           variant={value === i + 1 ? "primary" : "outline-primary"}
-          className="mt-2"
+          className="mt-2 text-pretty"
           onClick={() => choose(i + 1)}
           style={{ textTransform: "unset" }}
         >
