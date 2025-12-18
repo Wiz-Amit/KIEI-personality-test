@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.a4ff6230.chunk.css",
-    "main.js": "/static/js/main.9e268796.chunk.js",
-    "main.js.map": "/static/js/main.9e268796.chunk.js.map",
+    "main.css": "/static/css/main.c00386f9.chunk.css",
+    "main.js": "/static/js/main.f11edcd8.chunk.js",
+    "main.js.map": "/static/js/main.f11edcd8.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.5c159295.js",
     "runtime-main.js.map": "/static/js/runtime-main.5c159295.js.map",
     "static/js/2.c9ff0308.chunk.js": "/static/js/2.c9ff0308.chunk.js",
     "static/js/2.c9ff0308.chunk.js.map": "/static/js/2.c9ff0308.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.a4ff6230.chunk.css.map": "/static/css/main.a4ff6230.chunk.css.map",
+    "static/css/main.c00386f9.chunk.css.map": "/static/css/main.c00386f9.chunk.css.map",
     "static/js/2.c9ff0308.chunk.js.LICENSE.txt": "/static/js/2.c9ff0308.chunk.js.LICENSE.txt",
     "static/media/ambivert.181946e9.svg": "/static/media/ambivert.181946e9.svg",
     "static/media/extrovert.d1515cc1.svg": "/static/media/extrovert.d1515cc1.svg",
@@ -17,7 +17,7 @@
   "entrypoints": [
     "static/js/runtime-main.5c159295.js",
     "static/js/2.c9ff0308.chunk.js",
-    "static/css/main.a4ff6230.chunk.css",
-    "static/js/main.9e268796.chunk.js"
+    "static/css/main.c00386f9.chunk.css",
+    "static/js/main.f11edcd8.chunk.js"
   ]
 }
