@@ -3,6 +3,7 @@ import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import InvisibleCard from "../UI/InvisibleCard";
+import AppInfo from "../UI/AppInfo";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectFirstUnansweredQuestion,
@@ -59,7 +60,7 @@ const Welcome = (props) => {
 
       <InvisibleCard title="K. I. E. I. Personality assessment">
         <div className="text-center m-auto" style={{ maxWidth: "400px" }}>
-          <p className="text-muted">
+          <p className="text-muted text-pretty">
             Begin test and answer all questions to finish the Personality
             assessment
           </p>
@@ -88,19 +89,9 @@ const Welcome = (props) => {
             </Button>
           </Form>
         </div>
-      </InvisibleCard>
 
-      {/* <InvisibleCard title="How does it work?">
-        <div className="text-center">
-          <a
-            target="_blank"
-            rel="noreferrer"
-            href="https://webcache.googleusercontent.com/search?q=cache:n5AMriM_fN0J:dl.icdst.org/pdfs/files3/da1471d078a03fbdfb2b8cce83b1ee8f.pdf+&cd=3&hl=en&ct=clnk&gl=in"
-          >
-            Read more
-          </a>
-        </div>
-      </InvisibleCard> */}
+        <AppInfo />
+      </InvisibleCard>
     </Fragment>
   );
 };

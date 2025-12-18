@@ -10,7 +10,9 @@ const InvisibleCard = (props) => {
         className="text-center border-0 bg-white"
         style={{ fontSize: "calc(10px + 3vmin)" }}
       >
-        <h1 style={{ fontSize: "inherit" }}>{props.title || props.header}</h1>
+        <h1 style={{ fontSize: "inherit" }} className="mb-0">
+          {props.title || props.header}
+        </h1>
       </Card.Header>
       <Card.Body>{props.children}</Card.Body>
     </Card>
