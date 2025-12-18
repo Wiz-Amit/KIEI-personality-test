@@ -30,3 +30,41 @@ body {
 .text-pretty {
   text-wrap: pretty;
 }
+
+// Accessibility fixes for contrast
+.text-muted {
+  color: #495057 !important; // Darker color for better contrast (WCAG AA compliant)
+}
+
+// Ensure links are distinguishable
+a {
+  color: #000000 !important; // Dark black for links
+  text-decoration: underline;
+  
+  &:hover {
+    color: #212529 !important; // Slightly lighter on hover
+    text-decoration: underline;
+  }
+  
+  // For links in muted text, use dark black
+  .text-muted & {
+    color: #000000 !important;
+    text-decoration: underline;
+    
+    &:hover {
+      color: #212529 !important;
+      text-decoration: underline;
+    }
+  }
+}
+
+// Ensure button text has sufficient contrast (keep original primary color)
+.btn-primary {
+  color: #ffffff !important; // Ensure white text for contrast
+}
+
+// Fix navigation text contrast
+.navbar-light .navbar-brand,
+.navbar-light .navbar-nav .nav-link {
+  color: #212529 !important; // Darker color for better contrast
+}
