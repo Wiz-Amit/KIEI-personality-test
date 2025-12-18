@@ -21,10 +21,11 @@ const AppInfo = () => {
       <p className="text-muted mb-3">
         Unlike popular tests like the Myers-Briggs Type Indicator (MBTI) that
         force you into binary categories, the K.I.E.I places you on a
-        continuous spectrum. This means you're not just labeled as an
-        "introvert" or "extrovert"—instead, you discover exactly where you
-        fall on the spectrum, including the important middle ground of
-        "Ambiversion" where most people actually reside.
+        continuous spectrum. Rather than simply labeling you as an "introvert" or
+        "extrovert," this personality assessment reveals your exact position on
+        the spectrum. This includes identifying if you fall into the important
+        middle ground of "Ambiversion," which is where most people actually
+        reside according to personality research.
       </p>
 
       <h2 className="h5 mt-4 mb-2">Why K.I.E.I is Different</h2>
@@ -55,9 +56,11 @@ const AppInfo = () => {
         Your final score places you in one of 11 categories, ranging from
         "Extremely Extravert" to "Extremely Introvert," with the middle ranges
         representing various degrees of Ambiversion. Most people discover they
-        are Ambiverts—capable of being social and outgoing when needed, but
-        also valuing quiet time for reflection and recharge. This balanced
-        approach is actually the norm, not the exception.
+        are Ambiverts who can be social and outgoing when needed while also
+        valuing quiet time for reflection and recharge. This balanced approach
+        to personality is actually the norm, not the exception, making the
+        KIEI test particularly valuable for understanding the full spectrum of
+        human behavior.
       </p>
 
       <h2 className="h5 mt-4 mb-2">Who Can Benefit from This Test?</h2>
@@ -80,10 +83,11 @@ const AppInfo = () => {
       </p>
       <p className="text-muted">
         This digital version of the K.I.E.I assessment is brought to you by
-        WizAmit. Your privacy is completely protected—all scoring happens
-        locally in your browser, and no personal data is stored or shared. You
-        can take the test with confidence, knowing your responses remain
-        private while you gain valuable insights into your personality.
+        WizAmit. Your privacy is completely protected because all scoring
+        happens locally in your browser, and no personal data is stored or
+        shared. You can take this free personality test with complete confidence,
+        knowing your responses remain private while you gain valuable insights
+        into your personality type and behavioral patterns.
       </p>
     </article>
   );
